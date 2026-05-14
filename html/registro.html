@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Crea tu cuenta en NutriFit y empieza a compartir recetas saludables con la comunidad.">
+    <title>Registrarse — NutriFit</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="auth-card__logo">
+                <a href="index.html">
+                    <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+                </a>
+            </div>
+            <h1 class="auth-card__title">Crea tu cuenta</h1>
+            <p class="auth-card__subtitle">Únete a la comunidad de recetas saludables</p>
+
+            <div id="registroMensaje"></div>
+
+            <form id="registroForm" novalidate>
+                <div class="auth-field">
+                    <label for="regNombre">Nombre completo</label>
+                    <div class="auth-field__input-wrapper">
+                        <i data-lucide="user" class="auth-field__icon"></i>
+                        <input type="text" id="regNombre" placeholder="Tu nombre completo" autocomplete="name">
+                    </div>
+                    <div class="auth-field__error"></div>
+                </div>
+
+                <div class="auth-field">
+                    <label for="regEmail">Correo electrónico</label>
+                    <div class="auth-field__input-wrapper">
+                        <i data-lucide="mail" class="auth-field__icon"></i>
+                        <input type="email" id="regEmail" placeholder="tu@correo.com" autocomplete="email">
+                    </div>
+                    <div class="auth-field__error"></div>
+                </div>
+
+                <div class="auth-field">
+                    <label for="regPassword">Contraseña</label>
+                    <div class="auth-field__input-wrapper">
+                        <i data-lucide="lock" class="auth-field__icon"></i>
+                        <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres"
+                            autocomplete="new-password">
+                        <i data-lucide="eye" class="auth-field__toggle-pass"></i>
+                    </div>
+                    <div class="auth-field__error"></div>
+                </div>
+
+                <div class="auth-field">
+                    <label for="regConfirmPassword">Confirmar contraseña</label>
+                    <div class="auth-field__input-wrapper">
+                        <i data-lucide="shield-check" class="auth-field__icon"></i>
+                        <input type="password" id="regConfirmPassword" placeholder="Repite tu contraseña"
+                            autocomplete="new-password">
+                        <i data-lucide="eye" class="auth-field__toggle-pass"></i>
+                    </div>
+                    <div class="auth-field__error"></div>
+                </div>
+
+                <button type="submit" class="btn-primary auth-submit">Crear cuenta</button>
+            </form>
+
+            <p class="auth-card__alt">
+                ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/registro.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+/* ===== PÁGINA PUBLICAR RECETA ===== */
+
+.publicar-page {
+    padding-top: 90px;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+.publicar-page .container {
+    max-width: 720px;
+}
+
+.publicar-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.publicar-header__title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.publicar-header__subtitle {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Formulario */
+.publicar-form {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.6s ease-out;
+}
+
+.publicar-form__group {
+    margin-bottom: 24px;
+}
+
+.publicar-form__label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.publicar-form__input,
+.publicar-form__textarea,
+.publicar-form__select {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--bg-tertiary);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.publicar-form__input:focus,
+.publicar-form__textarea:focus,
+.publicar-form__select:focus {
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.1);
+}
+
+.publicar-form__textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.publicar-form__textarea--tall {
+    min-height: 180px;
+}
+
+.publicar-form__select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6.5 6.5 6.5-6.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+
+/* Subir imagen */
+.publicar-form__upload {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.publicar-form__upload:hover {
+    border-color: var(--accent-primary);
+    background: rgba(45, 106, 79, 0.03);
+}
+
+.publicar-form__upload-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.publicar-form__upload-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.publicar-form__upload-hint {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-top: 6px;
+}
+
+.publicar-form__upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.publicar-form__upload-preview {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    display: none;
+    margin-top: 16px;
+}
+
+/* Ingredientes dinámicos */
+.publicar-form__ingredients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.publicar-form__ingredient-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.publicar-form__ingredient-row input {
+    flex: 1;
+    padding: 12px 14px;
+    background: var(--bg-tertiary);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.publicar-form__ingredient-row input:focus {
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+}
+
+.publicar-form__remove-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(231, 76, 60, 0.08);
+    color: var(--danger);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.publicar-form__remove-btn:hover {
+    background: var(--danger);
+    color: white;
+}
+
+.publicar-form__add-btn {
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    background: rgba(45, 106, 79, 0.08);
+    color: var(--accent-primary);
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.publicar-form__add-btn:hover {
+    background: rgba(45, 106, 79, 0.15);
+}
+
+/* Botones del formulario */
+.publicar-form__actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.publicar-form__actions button {
+    flex: 1;
+    padding: 14px;
+}
+
+.publicar-form__cancel-btn {
+    text-align: center;
+}
+
+/* Info de tiempo y dificultad */
+.publicar-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .publicar-form {
+        padding: 24px;
+    }
+
+    .publicar-form__row {
+        grid-template-columns: 1fr;
+    }
+
+    .publicar-form__actions {
+        flex-direction: column;
+    }
+}

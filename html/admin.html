@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de Administración - NutriFit">
+    <title>Panel Admin — NutriFit</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <a href="index.html" class="header__logo">
+                <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+            </a>
+
+            <nav class="header__nav" id="mainNav">
+                <a href="index.html" class="header__nav-link">Inicio</a>
+                <a href="feed.html" class="header__nav-link">Recetas</a>
+                <a href="perfil.html" class="header__nav-link">Perfil</a>
+                <a href="admin.html" class="header__nav-link active">Admin</a>
+            </nav>
+
+            <div class="header__actions" id="headerActions">
+                <!-- Se llena con navegacion.js -->
+            </div>
+
+            <button class="header__hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <div class="admin-container">
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <div class="admin-logo__avatar" id="adminSidebarAvatar">A</div>
+                <div>
+                    <div class="admin-logo__name" id="adminSidebarName">Admin</div>
+                    <div class="admin-logo__role">👑 Administrador</div>
+                </div>
+            </div>
+
+            <nav class="admin-nav">
+                <button class="admin-nav__link active" data-section="usuarios">
+                    <i data-lucide="users"></i> Usuarios
+                </button>
+                <button class="admin-nav__link" data-section="recetas">
+                    <i data-lucide="book"></i> Recetas
+                </button>
+                <button class="admin-nav__link" data-section="comentarios">
+                    <i data-lucide="message-square"></i> Comentarios
+                </button>
+                <button class="admin-nav__link" data-section="estadisticas">
+                    <i data-lucide="bar-chart-2"></i> Estadísticas
+                </button>
+            </nav>
+
+            <button class="admin-nav__link admin-nav__link--logout" onclick="cerrarSesionAdmin()" style="margin-top:auto; color:#e07a5f;">
+                <i data-lucide="log-out"></i> Cerrar sesión
+            </button>
+        </aside>
+
+        <!-- CONTENIDO -->
+        <main class="admin-main">
+            <!-- SECCIÓN: USUARIOS -->
+            <section class="admin-section admin-section--active" data-section="usuarios">
+                <div class="admin-section__header">
+                    <h1 class="admin-section__title">Gestión de Usuarios</h1>
+                    <input type="text" class="admin-search" id="searchUsuarios" placeholder="🔍 Buscar usuarios...">
+                </div>
+
+                <!-- ESTADÍSTICAS -->
+                <div class="admin-stats">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon" style="background: #2d6a4f;">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div>
+                            <div class="admin-stat-card__number" id="totalUsuarios">0</div>
+                            <div class="admin-stat-card__label">Total Usuarios</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon" style="background: #e07a5f;">
+                            <i data-lucide="ban"></i>
+                        </div>
+                        <div>
+                            <div class="admin-stat-card__number" id="usuariosBaneados">0</div>
+                            <div class="admin-stat-card__label">Baneados</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon" style="background: #2a9d8f;">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <div>
+                            <div class="admin-stat-card__number" id="administradores">0</div>
+                            <div class="admin-stat-card__label">Administradores</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLA USUARIOS -->
+                <div class="admin-table-wrapper">
+                    <table class="admin-table" id="tablausuarios">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th>Fecha Registro</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuariosTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 30px;">⏳ Cargando usuarios...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: RECETAS -->
+            <section class="admin-section" data-section="recetas">
+                <div class="admin-section__header">
+                    <h1 class="admin-section__title">Gestión de Recetas</h1>
+                    <input type="text" class="admin-search" id="searchRecetas" placeholder="🔍 Buscar recetas...">
+                </div>
+
+                <!-- ESTADÍSTICAS -->
+                <div class="admin-stats">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon" style="background: #2d6a4f;">
+                            <i data-lucide="book"></i>
+                        </div>
+                        <div>
+                            <div class="admin-stat-card__number" id="totalRecetas">0</div>
+                            <div class="admin-stat-card__label">Total Recetas</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon" style="background: #f4a261;">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <div>
+                            <div class="admin-stat-card__number" id="totalLikes">0</div>
+                            <div class="admin-stat-card__label">Total Likes</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon" style="background: #264653;">
+                            <i data-lucide="message-square"></i>
+                        </div>
+                        <div>
+                            <div class="admin-stat-card__number" id="totalComentarios">0</div>
+                            <div class="admin-stat-card__label">Total Comentarios</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLA RECETAS -->
+                <div class="admin-table-wrapper">
+                    <table class="admin-table" id="tablarecetas">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Categoría</th>
+                                <th>Likes</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recetasTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 30px;">⏳ Cargando recetas...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: COMENTARIOS -->
+            <section class="admin-section" data-section="comentarios">
+                <div class="admin-section__header">
+                    <h1 class="admin-section__title">Gestión de Comentarios</h1>
+                    <input type="text" class="admin-search" id="searchComentarios" placeholder="🔍 Buscar comentarios...">
+                </div>
+
+                <!-- TABLA COMENTARIOS -->
+                <div class="admin-table-wrapper">
+                    <table class="admin-table" id="tablacomentarios">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Usuario</th>
+                                <th>En Receta</th>
+                                <th>Comentario</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comentariosTable">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 30px;">⏳ Cargando comentarios...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: ESTADÍSTICAS -->
+            <section class="admin-section" data-section="estadisticas">
+                <div class="admin-section__header">
+                    <h1 class="admin-section__title">Estadísticas</h1>
+                </div>
+
+                <div class="admin-stats-full">
+                    <div class="admin-stat-card-lg">
+                        <h3>Resumen General</h3>
+                        <div class="admin-stat-grid">
+                            <div class="admin-stat-item">
+                                <div class="admin-stat-item__number" id="statTotalUsuarios">0</div>
+                                <div class="admin-stat-item__label">Usuarios Totales</div>
+                            </div>
+                            <div class="admin-stat-item">
+                                <div class="admin-stat-item__number" id="statTotalRecetas">0</div>
+                                <div class="admin-stat-item__label">Recetas</div>
+                            </div>
+                            <div class="admin-stat-item">
+                                <div class="admin-stat-item__number" id="statTotalComentarios">0</div>
+                                <div class="admin-stat-item__label">Comentarios</div>
+                            </div>
+                            <div class="admin-stat-item">
+                                <div class="admin-stat-item__number" id="statTotalLikes">0</div>
+                                <div class="admin-stat-item__label">Likes</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card-lg">
+                        <h3>Categorías Populares</h3>
+                        <div id="categoriasPopulares" style="padding: 20px;">Cargando...</div>
+                    </div>
+
+                    <div class="admin-stat-card-lg">
+                        <h3>🏆 Top 5 Recetas por Likes</h3>
+                        <div id="topRecetas" style="padding: 20px;">Cargando...</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ===== MODAL USUARIO ===== -->
+    <div class="admin-modal" id="modalUsuario">
+        <div class="admin-modal__content">
+            <div class="admin-modal__header">
+                <h3 class="admin-modal__title">Detalles del Usuario</h3>
+                <button class="admin-modal__close" onclick="cerrarModalUsuario()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="admin-modal__body">
+                <div id="usuarioDetalles"></div>
+                <div class="admin-modal__actions">
+                    <button id="btnPromover" class="admin-btn admin-btn--primary" style="padding: 10px 20px; font-size: 0.9rem;">
+                        👑 Hacer Admin
+                    </button>
+                    <button id="btnBanear" class="admin-btn admin-btn--danger" style="padding: 10px 20px; font-size: 0.9rem;">
+                        🚫 Banear
+                    </button>
+                    <button class="admin-btn" onclick="cerrarModalUsuario()" style="padding: 10px 20px; font-size: 0.9rem; background: #f0f0f0; color: #333;">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>

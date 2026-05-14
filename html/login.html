@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicia sesión en NutriFit para acceder a tus recetas saludables favoritas.">
+    <title>Iniciar Sesión — NutriFit</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="auth-card__logo">
+                <a href="index.html">
+                    <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+                </a>
+            </div>
+            <h1 class="auth-card__title">Bienvenido de vuelta</h1>
+            <p class="auth-card__subtitle">Inicia sesión para continuar</p>
+
+            <div id="loginMensaje"></div>
+
+            <form id="loginForm" novalidate>
+                <div class="auth-field">
+                    <label for="loginEmail">Correo electrónico</label>
+                    <div class="auth-field__input-wrapper">
+                        <i data-lucide="mail" class="auth-field__icon"></i>
+                        <input type="email" id="loginEmail" placeholder="tu@correo.com" autocomplete="email">
+                    </div>
+                    <div class="auth-field__error"></div>
+                </div>
+
+                <div class="auth-field">
+                    <label for="loginPassword">Contraseña</label>
+                    <div class="auth-field__input-wrapper">
+                        <i data-lucide="lock" class="auth-field__icon"></i>
+                        <input type="password" id="loginPassword" placeholder="Tu contraseña" autocomplete="current-password">
+                        <i data-lucide="eye" class="auth-field__toggle-pass"></i>
+                    </div>
+                    <div class="auth-field__error"></div>
+                </div>
+
+                <button type="submit" class="btn-primary auth-submit">Iniciar sesión</button>
+            </form>
+
+            <p class="auth-card__alt">
+                ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+
+</html>

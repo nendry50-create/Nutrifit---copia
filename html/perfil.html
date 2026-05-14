@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tu perfil en NutriFit. Administra tus recetas y tu cuenta.">
+    <title>Mi Perfil — NutriFit</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/feed.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <a href="index.html" class="header__logo">
+                <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+            </a>
+
+            <nav class="header__nav" id="mainNav">
+                <a href="index.html" class="header__nav-link">Inicio</a>
+                <a href="feed.html" class="header__nav-link">Recetas</a>
+                <a href="publicar.html" class="header__nav-link">Publicar</a>
+                <a href="perfil.html" class="header__nav-link active">Perfil</a>
+            </nav>
+
+            <div class="header__actions" id="headerActions">
+                <a href="login.html" class="btn-secondary btn-small">
+                    <i data-lucide="log-in"></i> Iniciar sesión
+                </a>
+                <a href="registro.html" class="btn-primary btn-small">
+                    <i data-lucide="user-plus"></i> Registrarse
+                </a>
+            </div>
+
+            <button class="header__hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== BANNER ===== -->
+    <div class="perfil-banner"></div>
+
+    <!-- ===== INFO DEL PERFIL ===== -->
+    <section class="perfil-info">
+        <div class="perfil-info__card">
+            <div class="perfil-info__avatar" id="perfilAvatar">?</div>
+            <div class="perfil-info__details">
+                <h1 class="perfil-info__name" id="perfilNombre">Usuario</h1>
+                <p class="perfil-info__email" id="perfilEmail">correo@ejemplo.com</p>
+                <div class="perfil-info__stats">
+                    <div class="perfil-info__stat">
+                        <div class="perfil-info__stat-number" id="statRecetas">0</div>
+                        <div class="perfil-info__stat-label">Recetas</div>
+                    </div>
+                    <div class="perfil-info__stat">
+                        <div class="perfil-info__stat-number" id="statSeguidores">0</div>
+                        <div class="perfil-info__stat-label">Seguidores</div>
+                    </div>
+                    <div class="perfil-info__stat">
+                        <div class="perfil-info__stat-number" id="statSiguiendo">0</div>
+                        <div class="perfil-info__stat-label">Siguiendo</div>
+                    </div>
+                    <div class="perfil-info__stat">
+                        <div class="perfil-info__stat-number" id="statGuardadas">0</div>
+                        <div class="perfil-info__stat-label">Guardadas</div>
+                    </div>
+                    <div class="perfil-info__stat">
+                        <div class="perfil-info__stat-number" id="statLikes">0</div>
+                        <div class="perfil-info__stat-label">Likes</div>
+                    </div>
+                </div>
+            </div>
+            <div class="perfil-info__actions">
+                <a href="publicar.html" class="btn-primary btn-small">
+                    <i data-lucide="plus"></i> Nueva receta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTENIDO ===== -->
+    <section class="perfil-content">
+        <!-- Tabs -->
+        <div class="perfil-tabs">
+            <button class="perfil-tab active" data-tab="panelMisRecetas"><i data-lucide="file-text"></i> Mis recetas</button>
+            <button class="perfil-tab" data-tab="panelGuardadas"><i data-lucide="heart"></i> Guardadas</button>
+            <button class="perfil-tab" data-tab="panelSiguiendo"><i data-lucide="users"></i> Siguiendo</button>
+            <button class="perfil-tab" data-tab="panelCuenta"><i data-lucide="settings"></i> Cuenta</button>
+        </div>
+
+        <!-- Panel: Mis recetas -->
+        <div class="perfil-tab-panel perfil-tab-panel--active" id="panelMisRecetas"
+             style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:24px; padding:20px 0;">
+            <!-- Se llena con JavaScript -->
+        </div>
+
+        <!-- Panel: Guardadas -->
+        <div class="perfil-tab-panel" id="panelGuardadas"
+             style="display:none; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:24px; padding:20px 0;">
+            <!-- Se llena con JavaScript -->
+        </div>
+
+        <!-- Panel: Siguiendo -->
+        <div class="perfil-tab-panel" id="panelSiguiendo" style="display:none; padding:20px 0;">
+            <div id="listaSiguiendo" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+                <!-- Se llena con JS -->
+            </div>
+        </div>
+
+        <!-- Panel: Cuenta -->
+        <div class="perfil-tab-panel" id="panelCuenta">
+            <form class="perfil-account" id="perfilForm">
+                <h2 class="perfil-account__title">Información de la cuenta</h2>
+
+                <div class="perfil-account__group">
+                    <label class="perfil-account__label" for="inputNombre">Nombre completo</label>
+                    <input type="text" id="inputNombre" class="perfil-account__input" required>
+                </div>
+
+                <div class="perfil-account__group">
+                    <label class="perfil-account__label" for="inputEmail">Correo electrónico</label>
+                    <input type="email" id="inputEmail" class="perfil-account__input" required>
+                </div>
+
+                <div class="perfil-account__group">
+                    <label class="perfil-account__label" for="inputNewPassword">Nueva contraseña (opcional)</label>
+                    <input type="password" id="inputNewPassword" class="perfil-account__input" placeholder="Mínimo 6 caracteres">
+                </div>
+
+                <div class="perfil-account__actions">
+                    <button type="submit" class="btn-primary"><i data-lucide="save"></i> Guardar cambios</button>
+                    <button type="button" class="btn-danger" onclick="cerrarSesionPerfil()"><i data-lucide="log-out"></i> Cerrar sesión</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modal Editar Receta (Simplificado) -->
+    <div id="modalEditar" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); overflow: auto;">
+        <div class="modal-content" style="background: white; margin: 10% auto; padding: 20px; width: 90%; max-width: 500px; border-radius: 12px;">
+            <h2 style="margin-bottom: 20px;">Editar Receta</h2>
+            <form id="editRecipeForm">
+                <input type="hidden" id="editRecipeId">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Título</label>
+                    <input type="text" id="editRecipeTitulo" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Descripción</label>
+                    <textarea id="editRecipeDesc" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <button type="submit" class="btn-primary">Guardar</button>
+                    <button type="button" class="btn-secondary" onclick="cerrarModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/perfil.js"></script>
+</body>
+</html>

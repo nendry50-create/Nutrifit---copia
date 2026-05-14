@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explora cientos de recetas saludables de la comunidad NutriFit. Filtra por categoría y encuentra tu próxima comida.">
+    <title>Recetas — NutriFit</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/feed.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <a href="index.html" class="header__logo">
+                <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+            </a>
+
+            <nav class="header__nav" id="mainNav">
+                <a href="index.html" class="header__nav-link">Inicio</a>
+                <a href="feed.html" class="header__nav-link active">Recetas</a>
+                <a href="publicar.html" class="header__nav-link">Publicar</a>
+                <a href="perfil.html" class="header__nav-link">Perfil</a>
+            </nav>
+
+            <div class="header__actions" id="headerActions">
+                <a href="login.html" class="btn-secondary btn-small">
+                    <i data-lucide="log-in"></i> Iniciar sesión
+                </a>
+                <a href="registro.html" class="btn-primary btn-small">
+                    <i data-lucide="user-plus"></i> Registrarse
+                </a>
+            </div>
+
+            <button class="header__hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== FEED ===== -->
+    <main class="feed-page">
+        <div class="feed-layout">
+            <!-- Sidebar de filtros -->
+            <aside class="feed-sidebar">
+                <div class="feed-sidebar__section">
+                    <h3 class="feed-sidebar__title">Categorías</h3>
+                    <div class="feed-sidebar__categories">
+                        <button class="feed-sidebar__cat-btn active" data-categoria="todas">
+                            <i data-lucide="layout-grid" class="feed-sidebar__cat-icon"></i> Todas
+                        </button>
+                        <button class="feed-sidebar__cat-btn" data-categoria="desayunos">
+                            <i data-lucide="coffee" class="feed-sidebar__cat-icon"></i> Desayunos
+                        </button>
+                        <button class="feed-sidebar__cat-btn" data-categoria="ensaladas">
+                            <i data-lucide="leaf" class="feed-sidebar__cat-icon"></i> Ensaladas
+                        </button>
+                        <button class="feed-sidebar__cat-btn" data-categoria="platos-principales">
+                            <i data-lucide="utensils" class="feed-sidebar__cat-icon"></i> Platos
+                        </button>
+                        <button class="feed-sidebar__cat-btn" data-categoria="sopas">
+                            <i data-lucide="soup" class="feed-sidebar__cat-icon"></i> Sopas
+                        </button>
+                        <button class="feed-sidebar__cat-btn" data-categoria="postres">
+                            <i data-lucide="cake" class="feed-sidebar__cat-icon"></i> Postres
+                        </button>
+                        <button class="feed-sidebar__cat-btn" data-categoria="bebidas">
+                            <i data-lucide="cup-soda" class="feed-sidebar__cat-icon"></i> Bebidas
+                        </button>
+                        <button class="feed-sidebar__cat-btn" data-categoria="snacks">
+                            <i data-lucide="cookie" class="feed-sidebar__cat-icon"></i> Snacks
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Contenido principal -->
+            <div class="feed-main">
+                <div class="feed-topbar">
+                    <div class="feed-search">
+                        <i data-lucide="search" class="feed-search__icon"></i>
+                        <input type="text" class="feed-search__input" id="feedSearch"
+                            placeholder="Buscar recetas, ingredientes...">
+                    </div>
+                    <a href="publicar.html" class="btn-primary feed-topbar__publish-btn">
+                        <i data-lucide="plus-circle"></i> Publicar receta
+                    </a>
+                </div>
+
+                <div class="feed-grid" id="feedGrid">
+                    <!-- Se llena con JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/feed.js"></script>
+</body>
+
+</html>

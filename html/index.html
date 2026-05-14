@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="NutriFit - Red social de recetas saludables. Comparte, descubre y guarda las mejores recetas para una vida sana.">
+    <title>NutriFit — Recetas Saludables</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/feed.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <a href="index.html" class="header__logo">
+                <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+            </a>
+
+            <nav class="header__nav" id="mainNav">
+                <a href="index.html" class="header__nav-link active">Inicio</a>
+                <a href="feed.html" class="header__nav-link">Recetas</a>
+                <a href="publicar.html" class="header__nav-link">Publicar</a>
+                <a href="perfil.html" class="header__nav-link">Perfil</a>
+            </nav>
+
+            <div class="header__actions" id="headerActions">
+                <a href="login.html" class="btn-secondary btn-small">
+                    <i data-lucide="log-in"></i> Iniciar sesión
+                </a>
+                <a href="registro.html" class="btn-primary btn-small">
+                    <i data-lucide="user-plus"></i> Registrarse
+                </a>
+            </div>
+
+            <button class="header__hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero__bg"></div>
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <span class="hero__badge-dot"></span>
+                    Comunidad activa
+                </div>
+                <h1 class="hero__title">
+                    Descubre recetas <span>saludables</span> que transforman tu vida
+                </h1>
+                <p class="hero__description">
+                    Únete a la comunidad más vibrante de cocina saludable. Comparte tus creaciones,
+                    descubre nuevos sabores y lleva un estilo de vida nutritivo y delicioso.
+                </p>
+                <div class="hero__buttons">
+                    <a href="registro.html" class="btn-primary">
+                        <i data-lucide="rocket"></i> Comenzar gratis
+                    </a>
+                    <a href="feed.html" class="btn-secondary">
+                        Explorar recetas <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+                <div class="hero__stats">
+                    <div class="hero__stat">
+                        <div class="hero__stat-number">500+</div>
+                        <div class="hero__stat-label">Recetas</div>
+                    </div>
+                    <div class="hero__stat">
+                        <div class="hero__stat-number">2.5K</div>
+                        <div class="hero__stat-label">Miembros</div>
+                    </div>
+                    <div class="hero__stat">
+                        <div class="hero__stat-number">50+</div>
+                        <div class="hero__stat-label">Categorías</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__visual">
+                <div class="hero__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=500&fit=crop"
+                        alt="Comida saludable">
+                </div>
+                <div class="hero__floating-card hero__floating-card--top">
+                    <span class="hero__floating-icon"><i data-lucide="leaf"></i></span>
+                    <div>
+                        <div class="hero__floating-text">Bowl de Quinoa</div>
+                        <div class="hero__floating-sub"><i data-lucide="star" class="lucide-star-filled" style="width:12px;height:12px;"></i> 4.9 • 25 min</div>
+                    </div>
+                </div>
+                <div class="hero__floating-card hero__floating-card--bottom">
+                    <span class="hero__floating-icon"><i data-lucide="heart"></i></span>
+                    <div>
+                        <div class="hero__floating-text">+42 likes hoy</div>
+                        <div class="hero__floating-sub">Tendencia en la comunidad</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CARACTERÍSTICAS ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features__header">
+                <p class="features__subtitle">¿Por qué NutriFit?</p>
+                <h2 class="features__title">Todo lo que necesitas para comer mejor</h2>
+            </div>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i data-lucide="book-open"></i></div>
+                    <h3 class="feature-card__title">Recetas verificadas</h3>
+                    <p class="feature-card__text">
+                        Cada receta incluye información nutricional, tiempos de preparación y
+                        dificultad para que elijas la mejor opción.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i data-lucide="users"></i></div>
+                    <h3 class="feature-card__title">Comunidad activa</h3>
+                    <p class="feature-card__text">
+                        Conecta con otros amantes de la comida saludable, comparte tips
+                        y descubre nuevas tendencias culinarias.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"><i data-lucide="bookmark"></i></div>
+                    <h3 class="feature-card__title">Guarda tus favoritas</h3>
+                    <p class="feature-card__text">
+                        Crea tu colección personal de recetas favoritas y accede a ellas
+                        en cualquier momento y desde cualquier dispositivo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RECETAS POPULARES ===== -->
+    <section class="popular" id="popular">
+        <div class="container">
+            <div class="popular__header">
+                <h2 class="popular__title">Recetas populares</h2>
+                <a href="feed.html" class="popular__link">Ver todas <i data-lucide="arrow-right"></i></a>
+            </div>
+            <div class="popular__grid" id="popularGrid">
+                <!-- Se llena con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div>
+                    <div class="footer__brand">
+                        <img src="../img/nutrifit_modern_logo.png" class="footer__logo-img" alt="NutriFit Logo">
+                    </div>
+                    <p class="footer__desc">
+                        La red social de recetas saludables. Inspiramos a miles de personas
+                        a comer mejor cada día.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explora</h4>
+                    <ul class="footer__links">
+                        <li><a href="feed.html">Recetas</a></li>
+                        <li><a href="registro.html">Registrarse</a></li>
+                        <li><a href="publicar.html">Publicar</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Categorías</h4>
+                    <ul class="footer__links">
+                        <li><a href="feed.html">Ensaladas</a></li>
+                        <li><a href="feed.html">Desayunos</a></li>
+                        <li><a href="feed.html">Postres</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                © 2026 NutriFit. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

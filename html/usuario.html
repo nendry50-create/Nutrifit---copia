@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil de usuario en NutriFit.">
+    <title>Perfil de usuario — NutriFit</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/feed.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .usuario-hero {
+            background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 60%, #40916c 100%);
+            padding: 80px 24px 40px;
+            text-align: center;
+            color: white;
+        }
+        .usuario-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 4px solid rgba(255,255,255,0.5);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .usuario-nombre {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .usuario-miembro {
+            font-size: 0.88rem;
+            opacity: 0.75;
+            margin-bottom: 24px;
+        }
+        .usuario-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 28px;
+        }
+        .usuario-stat-num {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .usuario-stat-lbl {
+            font-size: 0.78rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        #btnSeguir {
+            padding: 12px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        #btnSeguir.siguiendo {
+            background: white;
+            color: #1b4332;
+        }
+        #btnSeguir.no-siguiendo {
+            background: transparent;
+            color: white;
+        }
+        #btnSeguir:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        .usuario-recetas-seccion {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+        .usuario-recetas-titulo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1b4332;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .usuario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        #usuarioCargando {
+            text-align: center;
+            padding: 80px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <a href="index.html" class="header__logo">
+                <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+            </a>
+            <nav class="header__nav" id="mainNav">
+                <a href="index.html" class="header__nav-link">Inicio</a>
+                <a href="feed.html" class="header__nav-link">Recetas</a>
+                <a href="publicar.html" class="header__nav-link">Publicar</a>
+                <a href="perfil.html" class="header__nav-link">Perfil</a>
+            </nav>
+            <div class="header__actions" id="headerActions">
+                <a href="login.html" class="btn-secondary btn-small">
+                    <i data-lucide="log-in"></i> Iniciar sesión
+                </a>
+                <a href="registro.html" class="btn-primary btn-small">
+                    <i data-lucide="user-plus"></i> Registrarse
+                </a>
+            </div>
+            <button class="header__hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO DEL USUARIO -->
+    <div id="usuarioCargando">
+        <div class="modal-loading__spinner" style="margin:0 auto;"></div>
+        <p style="margin-top:16px;">Cargando perfil...</p>
+    </div>
+
+    <div id="usuarioContenido" style="display:none;">
+        <div class="usuario-hero">
+            <div class="usuario-avatar" id="usuarioAvatar">?</div>
+            <div class="usuario-nombre" id="usuarioNombre">—</div>
+            <div class="usuario-miembro" id="usuarioMiembro">Miembro desde —</div>
+            <div class="usuario-stats">
+                <div>
+                    <div class="usuario-stat-num" id="statRecetas">0</div>
+                    <div class="usuario-stat-lbl">Recetas</div>
+                </div>
+                <div>
+                    <div class="usuario-stat-num" id="statSeguidores">0</div>
+                    <div class="usuario-stat-lbl">Seguidores</div>
+                </div>
+                <div>
+                    <div class="usuario-stat-num" id="statSiguiendo">0</div>
+                    <div class="usuario-stat-lbl">Siguiendo</div>
+                </div>
+            </div>
+            <div id="accionesSeguir"></div>
+        </div>
+
+        <!-- RECETAS DEL USUARIO -->
+        <div class="usuario-recetas-seccion">
+            <div class="usuario-recetas-titulo"><i data-lucide="file-text"></i> Recetas publicadas</div>
+            <div class="usuario-grid" id="usuarioGrid">
+                <!-- Se llena con JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/usuario.js"></script>
+</body>
+
+</html>

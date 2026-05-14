@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Publica tu receta saludable en NutriFit y compártela con miles de personas.">
+    <title>Publicar Receta — NutriFit</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/publicar.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <a href="index.html" class="header__logo">
+                <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+            </a>
+
+            <nav class="header__nav" id="mainNav">
+                <a href="index.html" class="header__nav-link">Inicio</a>
+                <a href="feed.html" class="header__nav-link">Recetas</a>
+                <a href="publicar.html" class="header__nav-link active">Publicar</a>
+                <a href="perfil.html" class="header__nav-link">Perfil</a>
+            </nav>
+
+            <div class="header__actions" id="headerActions">
+                <a href="login.html" class="btn-secondary btn-small">
+                    <i data-lucide="log-in"></i> Iniciar sesión
+                </a>
+                <a href="registro.html" class="btn-primary btn-small">
+                    <i data-lucide="user-plus"></i> Registrarse
+                </a>
+            </div>
+
+            <button class="header__hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== PUBLICAR RECETA ===== -->
+    <main class="publicar-page">
+        <div class="container">
+            <div class="publicar-header">
+                <h1 class="publicar-header__title"><i data-lucide="file-plus"></i> Publica tu receta</h1>
+                <p class="publicar-header__subtitle">Comparte tu creación con la comunidad</p>
+            </div>
+
+            <div id="publicarMensaje"></div>
+
+            <form class="publicar-form" id="publicarForm" novalidate>
+                <!-- Título -->
+                <div class="publicar-form__group">
+                    <label class="publicar-form__label" for="recetaTitulo">Título de la receta *</label>
+                    <input class="publicar-form__input" type="text" id="recetaTitulo"
+                        placeholder="Ej: Bowl de Quinoa con Aguacate">
+                </div>
+
+                <!-- Descripción -->
+                <div class="publicar-form__group">
+                    <label class="publicar-form__label" for="recetaDescripcion">Descripción breve *</label>
+                    <textarea class="publicar-form__textarea" id="recetaDescripcion"
+                        placeholder="Describe tu receta en pocas líneas..."></textarea>
+                </div>
+
+                <!-- Imagen -->
+                <div class="publicar-form__group">
+                    <label class="publicar-form__label">Imagen de la receta</label>
+                    <div class="publicar-form__upload">
+                        <div class="publicar-form__upload-icon"><i data-lucide="camera"></i></div>
+                        <div class="publicar-form__upload-text">Haz click o arrastra una imagen</div>
+                        <div class="publicar-form__upload-hint">JPG, PNG — máximo 5MB</div>
+                        <input type="file" id="recetaImagen" accept="image/*">
+                        <img class="publicar-form__upload-preview" id="imagePreview" alt="Preview">
+                    </div>
+                </div>
+
+                <!-- Categoría, Tiempo y Dificultad -->
+                <div class="publicar-form__group">
+                    <label class="publicar-form__label" for="recetaCategoria">Categoría *</label>
+                    <select class="publicar-form__select" id="recetaCategoria">
+                        <option value="">Selecciona una categoría</option>
+                        <option value="desayunos">☕ Desayunos</option>
+                        <option value="ensaladas">🥗 Ensaladas</option>
+                        <option value="platos-principales">🍽️ Platos principales</option>
+                        <option value="sopas">🍲 Sopas</option>
+                        <option value="postres">🍰 Postres</option>
+                        <option value="bebidas">🥤 Bebidas</option>
+                        <option value="snacks">🍪 Snacks</option>
+                    </select>
+                </div>
+
+                <div class="publicar-form__row">
+                    <div class="publicar-form__group">
+                        <label class="publicar-form__label" for="recetaTiempo">Tiempo de preparación</label>
+                        <input class="publicar-form__input" type="text" id="recetaTiempo"
+                            placeholder="Ej: 30 min">
+                    </div>
+                    <div class="publicar-form__group">
+                        <label class="publicar-form__label" for="recetaDificultad">Dificultad</label>
+                        <select class="publicar-form__select" id="recetaDificultad">
+                            <option value="">Selecciona</option>
+                            <option value="Fácil">Fácil</option>
+                            <option value="Media">Media</option>
+                            <option value="Difícil">Difícil</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Ingredientes -->
+                <div class="publicar-form__group">
+                    <label class="publicar-form__label">Ingredientes *</label>
+                    <div class="publicar-form__ingredients-list" id="ingredientesList">
+                        <div class="publicar-form__ingredient-row">
+                            <input type="text" placeholder="Ej: 1 taza de quinoa">
+                            <button type="button" class="publicar-form__remove-btn" onclick="eliminarIngrediente(this)">✕</button>
+                        </div>
+                        <div class="publicar-form__ingredient-row">
+                            <input type="text" placeholder="Ej: 1 aguacate maduro">
+                            <button type="button" class="publicar-form__remove-btn" onclick="eliminarIngrediente(this)">✕</button>
+                        </div>
+                    </div>
+                    <button type="button" class="publicar-form__add-btn" onclick="agregarIngrediente()">
+                        <i data-lucide="plus"></i> Agregar ingrediente
+                    </button>
+                </div>
+
+                <!-- Instrucciones -->
+                <div class="publicar-form__group">
+                    <label class="publicar-form__label" for="recetaInstrucciones">Instrucciones *</label>
+                    <textarea class="publicar-form__textarea" id="recetaInstrucciones"
+                        placeholder="Escribe paso a paso cómo preparar tu receta..."></textarea>
+                </div>
+
+                <!-- Botones -->
+                <div class="publicar-form__actions">
+                    <a href="feed.html" class="btn-secondary publicar-form__cancel-btn">Cancelar</a>
+                    <button type="submit" class="btn-primary"><i data-lucide="send"></i> Publicar receta</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/publicar.js"></script>
+</body>
+
+</html>
