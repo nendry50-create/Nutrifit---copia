@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel Master - NutriFit">
+    <title>Panel Master — NutriFit</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/master.css">
+    <script src="https://unpkg.com/chart.js@latest/dist/chart.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <a href="index.html" class="header__logo">
+                <img src="../img/nutrifit_modern_logo.png" class="header__logo-img" alt="NutriFit Logo">
+            </a>
+
+            <nav class="header__nav" id="mainNav">
+                <a href="index.html" class="header__nav-link">Inicio</a>
+                <a href="feed.html" class="header__nav-link">Recetas</a>
+                <a href="perfil.html" class="header__nav-link">Perfil</a>
+                <a href="master.html" class="header__nav-link active">Master</a>
+            </nav>
+
+            <div class="header__actions" id="headerActions">
+                <!-- Se llena con navegacion.js -->
+            </div>
+
+            <button class="header__hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <div class="master-container">
+        <!-- SIDEBAR -->
+        <aside class="master-sidebar">
+            <div class="master-logo">
+                <div class="master-logo__avatar" id="masterSidebarAvatar">M</div>
+                <div>
+                    <div class="master-logo__name" id="masterSidebarName">Master</div>
+                    <div class="master-logo__role">👑 Súper Administrador</div>
+                </div>
+            </div>
+
+            <nav class="master-nav">
+                <button class="master-nav__link active" data-section="dashboard">
+                    <i data-lucide="layout-dashboard"></i> Dashboard
+                </button>
+                <button class="master-nav__link" data-section="usuarios">
+                    <i data-lucide="users"></i> Usuarios
+                </button>
+                <button class="master-nav__link" data-section="recetas">
+                    <i data-lucide="book"></i> Recetas
+                </button>
+                <button class="master-nav__link" data-section="comentarios">
+                    <i data-lucide="message-square"></i> Comentarios
+                </button>
+                <button class="master-nav__link" data-section="estadisticas">
+                    <i data-lucide="bar-chart-2"></i> Estadísticas
+                </button>
+            </nav>
+
+            <button class="master-nav__link master-nav__link--logout" onclick="cerrarSesionMaster()" style="margin-top:auto; color:#e07a5f;">
+                <i data-lucide="log-out"></i> Cerrar sesión
+            </button>
+        </aside>
+
+        <!-- CONTENIDO -->
+        <main class="master-main">
+            <!-- SECCIÓN: DASHBOARD (INICIO) -->
+            <section class="master-section master-section--active" data-section="dashboard">
+                <div class="master-section__header">
+                    <h1 class="master-section__title">Panel de Control Master</h1>
+                    <p class="master-section__subtitle">Bienvenido al panel de súper administrador</p>
+                </div>
+
+                <!-- ESTADÍSTICAS RÁPIDAS -->
+                <div class="master-stats-grid">
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #2d6a4f;">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="dashTotalUsuarios">0</div>
+                            <div class="master-stat-card__label">Usuarios</div>
+                        </div>
+                    </div>
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #f4a261;">
+                            <i data-lucide="book"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="dashTotalRecetas">0</div>
+                            <div class="master-stat-card__label">Recetas</div>
+                        </div>
+                    </div>
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #e07a5f;">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="dashTotalLikes">0</div>
+                            <div class="master-stat-card__label">Likes Totales</div>
+                        </div>
+                    </div>
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #2a9d8f;">
+                            <i data-lucide="message-square"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="dashTotalComentarios">0</div>
+                            <div class="master-stat-card__label">Comentarios</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRÁFICAS -->
+                <div class="master-charts-grid">
+                    <div class="master-chart-container">
+                        <h3>Usuarios por Día (Últimos 7 días)</h3>
+                        <canvas id="chartUsuariosPorDia"></canvas>
+                    </div>
+                    <div class="master-chart-container">
+                        <h3>Distribución de Roles</h3>
+                        <canvas id="chartRoles"></canvas>
+                    </div>
+                    <div class="master-chart-container">
+                        <h3>Recetas por Categoría</h3>
+                        <canvas id="chartCategorias"></canvas>
+                    </div>
+                    <div class="master-chart-container">
+                        <h3>Actividad de Likes (Últimos 7 días)</h3>
+                        <canvas id="chartLikesPorDia"></canvas>
+                    </div>
+                    <div class="master-chart-container">
+                        <h3>Comentarios por Día (Últimos 7 días)</h3>
+                        <canvas id="chartComentariosPorDia"></canvas>
+                    </div>
+                    <div class="master-chart-container">
+                        <h3>Estado de Usuarios</h3>
+                        <canvas id="chartEstadoUsuarios"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: USUARIOS (Idéntico a Admin) -->
+            <section class="master-section" data-section="usuarios">
+                <div class="master-section__header">
+                    <h1 class="master-section__title">Gestión de Usuarios</h1>
+                    <input type="text" class="master-search" id="searchUsuarios" placeholder="🔍 Buscar usuarios...">
+                </div>
+
+                <!-- ESTADÍSTICAS -->
+                <div class="master-stats">
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #2d6a4f;">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="totalUsuarios">0</div>
+                            <div class="master-stat-card__label">Total Usuarios</div>
+                        </div>
+                    </div>
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #e07a5f;">
+                            <i data-lucide="ban"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="usuariosBaneados">0</div>
+                            <div class="master-stat-card__label">Baneados</div>
+                        </div>
+                    </div>
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #2a9d8f;">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="administradores">0</div>
+                            <div class="master-stat-card__label">Administradores</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLA USUARIOS -->
+                <div class="master-table-wrapper">
+                    <table class="master-table" id="tablausuarios">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th>Fecha Registro</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuariosTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 30px;">⏳ Cargando usuarios...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: RECETAS -->
+            <section class="master-section" data-section="recetas">
+                <div class="master-section__header">
+                    <h1 class="master-section__title">Gestión de Recetas</h1>
+                    <input type="text" class="master-search" id="searchRecetas" placeholder="🔍 Buscar recetas...">
+                </div>
+
+                <!-- ESTADÍSTICAS -->
+                <div class="master-stats">
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #2d6a4f;">
+                            <i data-lucide="book"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="totalRecetas">0</div>
+                            <div class="master-stat-card__label">Total Recetas</div>
+                        </div>
+                    </div>
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #f4a261;">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="totalLikes">0</div>
+                            <div class="master-stat-card__label">Total Likes</div>
+                        </div>
+                    </div>
+                    <div class="master-stat-card">
+                        <div class="master-stat-card__icon" style="background: #264653;">
+                            <i data-lucide="message-square"></i>
+                        </div>
+                        <div>
+                            <div class="master-stat-card__number" id="totalComentarios">0</div>
+                            <div class="master-stat-card__label">Total Comentarios</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLA RECETAS -->
+                <div class="master-table-wrapper">
+                    <table class="master-table" id="tablarecetas">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Categoría</th>
+                                <th>Likes</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recetasTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 30px;">⏳ Cargando recetas...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: COMENTARIOS -->
+            <section class="master-section" data-section="comentarios">
+                <div class="master-section__header">
+                    <h1 class="master-section__title">Gestión de Comentarios</h1>
+                    <input type="text" class="master-search" id="searchComentarios" placeholder="🔍 Buscar comentarios...">
+                </div>
+
+                <!-- TABLA COMENTARIOS -->
+                <div class="master-table-wrapper">
+                    <table class="master-table" id="tablacomentarios">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Usuario</th>
+                                <th>En Receta</th>
+                                <th>Comentario</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comentariosTable">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 30px;">⏳ Cargando comentarios...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: ESTADÍSTICAS DETALLADAS -->
+            <section class="master-section" data-section="estadisticas">
+                <div class="master-section__header">
+                    <h1 class="master-section__title">Estadísticas Detalladas</h1>
+                </div>
+
+                <div class="master-stats-full">
+                    <div class="master-stat-card-lg">
+                        <h3>Resumen General</h3>
+                        <div class="master-stat-grid">
+                            <div class="master-stat-item">
+                                <div class="master-stat-item__number" id="statTotalUsuarios">0</div>
+                                <div class="master-stat-item__label">Usuarios Totales</div>
+                            </div>
+                            <div class="master-stat-item">
+                                <div class="master-stat-item__number" id="statTotalRecetas">0</div>
+                                <div class="master-stat-item__label">Recetas</div>
+                            </div>
+                            <div class="master-stat-item">
+                                <div class="master-stat-item__number" id="statTotalComentarios">0</div>
+                                <div class="master-stat-item__label">Comentarios</div>
+                            </div>
+                            <div class="master-stat-item">
+                                <div class="master-stat-item__number" id="statTotalLikes">0</div>
+                                <div class="master-stat-item__label">Likes</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="master-stat-card-lg">
+                        <h3>Top 5 Recetas por Likes</h3>
+                        <div id="topRecetas" style="padding: 20px;">Cargando...</div>
+                    </div>
+
+                    <div class="master-stat-card-lg">
+                        <h3>Categorías Populares</h3>
+                        <div id="categoriasPopulares" style="padding: 20px;">Cargando...</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ===== MODAL USUARIO ===== -->
+    <div class="master-modal" id="modalUsuario">
+        <div class="master-modal__content">
+            <div class="master-modal__header">
+                <h3 class="master-modal__title">Detalles del Usuario</h3>
+                <button class="master-modal__close" onclick="cerrarModalUsuario()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="master-modal__body">
+                <div id="usuarioDetalles"></div>
+                <div class="master-modal__actions">
+                    <button id="btnPromover" class="master-btn master-btn--primary" style="padding: 10px 20px; font-size: 0.9rem;">
+                        Hacer Admin
+                    </button>
+                    <button id="btnBanear" class="master-btn master-btn--danger" style="padding: 10px 20px; font-size: 0.9rem;">
+                        Banear
+                    </button>
+                    <button class="master-btn" onclick="cerrarModalUsuario()" style="padding: 10px 20px; font-size: 0.9rem; background: #f0f0f0; color: #333;">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/master.js"></script>
+</body>
+
+</html>
